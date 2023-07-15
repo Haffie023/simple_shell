@@ -11,8 +11,11 @@ int main(void)
 {
 	char *buf = NULL;
 
-	prompt();
-	buf = getcmd();
-	printf("%s", buf);
+	while (1)
+	{
+		prompt();
+		buf = getcmd();
+		printf("%s", buf);
+	}
 	return (0);
 }

@@ -1,4 +1,5 @@
 #include "simple_shell.h"
+#include <stdio.h>
 
 /**
  * main - entry point
@@ -8,7 +9,10 @@
 
 int main(void)
 {
+	char *buf = NULL;
 
 	prompt();
+	buf = getcmd();
+	printf("%s", buf);
 	return (0);
 }

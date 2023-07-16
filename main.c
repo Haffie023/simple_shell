@@ -17,8 +17,8 @@ int main(void)
 	{
 		prompt();
 		buf = getcmd();
-		printf("%s", buf);
 		segments = tokenize(&buf);
+		runscmd(segments);
 	}
 	return (0);
 }

@@ -1,5 +1,6 @@
 #include "simple_shell.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 /**
@@ -29,6 +30,8 @@ int main(void)
 		i = getline(&buf, &n, stdin);
 		segments = tokenize(&buf);
 		runscmd(segments);
+		free(segments);
+		free(buf);
 	}
 	return (0);
 }

@@ -4,10 +4,9 @@
 int _putchar(char c);
 int main (void);
 int prompt(void);
-char *getcmd(void);
 char **tokenize(char **buf);
+int runscmd(char **tokens);
 /**
-* parse - strtok, malloc, realloc
 * fork()
 * execve
 */

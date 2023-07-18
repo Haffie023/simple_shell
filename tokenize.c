@@ -30,8 +30,7 @@ char **tokenize(char **buf)
 			init_cap *= 1.5;
 			segments = realloc(segments, sizeof(char *) * init_cap);
 		}
-		segments[seg_count] = strdup(token);
-		printf("%s\n", token);
+		segments[seg_count] = token;
 		seg_count++;
 		token = strtok(NULL, dl);
 	}

@@ -11,25 +11,20 @@
 
 char **tokenize(char **buf)
 {
-	int init_cap, seg_count;
-	char *token;
-	char **segments;
-	char dl[] = " \t\n";
+	int i;
+	int seg_count = 0;
+	char *token = NULL;
+	char **segments = NULL;
+	char dl[] = " \n\t\r";
 
-	init_cap = 10;
-	seg_count = 0;
-	segments = malloc(sizeof(char *) * init_cap);
+	segments = malloc(sizeof(char *) * BUFFER);
 	if (segments == NULL)
 	{
+		exit(EXIT_FAILURE);
 	}
 	token = strtok((*buf), dl);
 	while (token != NULL)
 	{
-		if (seg_count >= init_cap)
-		{
-			init_cap *= 1.5;
-			segments = realloc(segments, sizeof(char *) * init_cap);
-		}
 		segments[seg_count] = token;
 		seg_count++;
 		token = strtok(NULL, dl);

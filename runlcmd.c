@@ -12,7 +12,6 @@
 
 int runlcmd(char *cmd, char **tokens)
 {
-	int i;
 	pid_t pid;
 
 	pid = fork();
@@ -22,7 +21,7 @@ int runlcmd(char *cmd, char **tokens)
 	}
 	if (pid == 0)
 	{
-		i = execve(cmd, tokens, NULL);
+		execve(cmd, tokens, NULL);
 	}
 	else
 	{

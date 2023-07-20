@@ -16,21 +16,23 @@ char *getfullpath(char **segments)
 	char *path = NULL;
 	char *token = NULL;
 	char *fullpath = NULL;
-	int i, cmd_len;
+	int cmd_len;
 	struct stat statbuf;
 
 	path = strdup(getenv("PATH"));
-	printf("%s\n", path);
-	printf("%s\n", getenv("PATH"));
 	cmd_len = _strlen(segments[0]);
 	token = strtok(path, ":");
 	while (token != NULL)
 	{
 		fullpath = malloc(sizeof(char) * ((_strlen(token)) + cmd_len + 2));
+		if (fullpath == NULL)
+		{
+			free(path);
+			return (NULL);
+		}
 		strcpy(fullpath, token);
 		strcat(fullpath, "/");
 		strcat(fullpath, segments[0]);
-		printf("%s\n", fullpath);
 		if (stat(fullpath, &statbuf) == 0)
 		{
 			free(path);

@@ -9,10 +9,10 @@
  * Return: Pointer to tokenized strings
  */
 
-char **tokenize(char **buf)
+char **tokenize(char *buf)
 {
-	int i;
 	int seg_count = 0;
+	char *b = strdup(buf);
 	char *token = NULL;
 	char **segments = NULL;
 	char dl[] = " \n\t\r";
@@ -22,13 +22,14 @@ char **tokenize(char **buf)
 	{
 		exit(EXIT_FAILURE);
 	}
-	token = strtok((*buf), dl);
+	token = strtok(b, dl);
 	while (token != NULL)
 	{
-		segments[seg_count] = token;
+		segments[seg_count] = strdup(token);
 		seg_count++;
 		token = strtok(NULL, dl);
 	}
 	segments[seg_count] = NULL;
+	free(b);
 	return (segments);
 }

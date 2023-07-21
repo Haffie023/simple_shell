@@ -6,17 +6,20 @@
 
 /**
  * main - entry point
- *
+ * @ac: count of command and args
+ * @av: array of pointers to command and aargs
+ * @env: environment variables 
  * Return: 0 on success
  */
 
-int main(void)
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char **env)
 {
 	char *buf = NULL;
 	char **segments = NULL;
 	char *fullpath = NULL;
 	size_t n = 0;
 	int imode = 1;
+	int flag = 1;
 
 	while (1 && imode)
 	{
@@ -32,11 +35,15 @@ int main(void)
 		segments = tokenize(buf);
 		fullpath = getfullpath(segments);
 		if (fullpath == NULL)
+		{
 			fullpath = segments[0];
-		runlcmd(fullpath, segments);
+			flag = 0;
+		}
+		runlcmd(fullpath, segments, env);
+		dfree(segments);
+		if (flag)
+			sfree(fullpath);
 	}
-	dfree(segments);
 	free(buf);
-	free(fullpath);
 	return (0);
 }

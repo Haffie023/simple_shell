@@ -3,15 +3,15 @@
 #include <sys/wait.h>
 
 /**
- * runscmd - executes full path commands e.g "/bin/ls"
+ * runlcmd - executes full path commands e.g "/bin/ls"
+ * @cmd: absolute path to command's program
  * @tokens: the command
- *
+ * @envt: environment variables
  * Return: 0 on success
  */
 
-int runscmd(char **tokens)
+int runlcmd(char *cmd, char **tokens, char **envt)
 {
-	int i;
 	pid_t pid;
 
 	pid = fork();
@@ -21,7 +21,7 @@ int runscmd(char **tokens)
 	}
 	if (pid == 0)
 	{
-		i = execve(tokens[0], tokens, NULL);
+		execve(cmd, tokens, envt);
 	}
 	else
 	{

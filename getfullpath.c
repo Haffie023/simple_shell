@@ -19,6 +19,7 @@ char *getfullpath(char **segments)
 	int cmd_len;
 	struct stat statbuf;
 
+	builtin(segments);
 	path = strdup(getenv("PATH"));
 	cmd_len = _strlen(segments[0]);
 	token = strtok(path, ":");

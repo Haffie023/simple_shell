@@ -7,8 +7,8 @@
 /**
  * main - entry point
  * @ac: count of command and args
- * @av: array of pointers to command and aargs
- * @env: environment variables 
+ * @av: array of pointers to command and args
+ * @env: environment variables
  * Return: 0 on success
  */
 

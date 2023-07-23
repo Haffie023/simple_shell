@@ -20,7 +20,7 @@ int builtin(char **segments)
 	i = 0;
 	while (strct[i].s != NULL)
 	{
-		if (strcmp(segments[0], strct[i].s) == 0)
+		if (_strcmp(segments[0], strct[i].s) == 0)
 		{
 			strct[i].f(segments);
 			return (0);

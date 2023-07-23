@@ -17,7 +17,7 @@ char *getfullpath(char **segments)
 
 	if (stat(segments[0], &statbuf) == 0)
 	{
-		return (strdup(segments[0]));
+		return (_strdup(segments[0]));
 	}
 	path = strdup(_getenv("PATH"));
 	cmd_len = _strlen(segments[0]);
@@ -30,9 +30,9 @@ char *getfullpath(char **segments)
 			free(path);
 			return (NULL);
 		}
-		strcpy(fullpath, token);
-		strcat(fullpath, "/");
-		strcat(fullpath, segments[0]);
+		_strcpy(fullpath, token);
+		_strcat(fullpath, "/");
+		_strcat(fullpath, segments[0]);
 		if (stat(fullpath, &statbuf) == 0)
 		{
 			free(path);
@@ -59,10 +59,43 @@ char *_getenv(char *str)
 	temp = environ;
 	while (*temp)
 	{
-		s = strstr(*temp, str);
+		s = _strstr(*temp, str);
 		if (s != NULL)
 			break;
 		temp = temp + 1;
 	}
 	return (&s[5]);
+}
+/**
+ * _strstr - locates a substring
+ * @haystack: string to be searched
+ * @needle: string to search
+ * Return: to beginning of substring or NULL
+ */
+char *_strstr(char *haystack, char *needle)
+{
+	int len1 = 0, len2 = 0, i, j;
+
+	while (haystack[len1] != '\0')
+	{
+		len1++;
+	}
+	for (; needle[len2] != '\0'; len2++)
+	{
+	}
+	for (i = 0; i < len1; i++)
+	{
+	for (j = 0; j < len2; j++)
+	{
+		if (haystack[i + j] != needle[j])
+		{
+			break;
+		}
+	}
+	if (j == len2)
+	{
+		return (haystack + i);
+	}
+	}
+	return (NULL);
 }

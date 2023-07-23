@@ -12,7 +12,7 @@
 char **tokenize(char *buf)
 {
 	int seg_count = 0;
-	char *b = strdup(buf);
+	char *b = _strdup(buf);
 	char *token = NULL;
 	char **segments = NULL;
 	char dl[] = " \n\t\r";
@@ -25,7 +25,7 @@ char **tokenize(char *buf)
 	token = strtok(b, dl);
 	while (token != NULL)
 	{
-		segments[seg_count] = strdup(token);
+		segments[seg_count] = _strdup(token);
 		seg_count++;
 		token = strtok(NULL, dl);
 	}

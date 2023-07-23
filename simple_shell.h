@@ -35,5 +35,10 @@ int builtin(char **segments);
 int  exitin(char **segments);
 int _printenv(char **segments);
 char *_getenv(char *str);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
+char *_strdup(char *str);
+char *_strstr(char *haystack, char *needle);
 
 #endif

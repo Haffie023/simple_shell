@@ -34,5 +34,6 @@ int no_delim(char *str);
 int builtin(char **segments);
 int  exitin(char **segments);
 int _printenv(char **segments);
+char *_getenv(char *str);
 
 #endif

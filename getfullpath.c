@@ -19,7 +19,7 @@ char *getfullpath(char **segments)
 	{
 		return (strdup(segments[0]));
 	}
-	path = strdup(getenv("PATH"));
+	path = strdup(_getenv("PATH"));
 	cmd_len = _strlen(segments[0]);
 	token = strtok(path, ":");
 	while (token != NULL)
@@ -43,4 +43,26 @@ char *getfullpath(char **segments)
 	}
 	free(path);
 	return (NULL);
+}
+/**
+ * _getenv - impliments the getenv function
+ * @str: variable to find (PATH)
+ *
+ * Return: pointer to contents of variable
+ */
+
+char *_getenv(char *str)
+{
+	char **temp;
+	char *s;
+
+	temp = environ;
+	while (*temp)
+	{
+		s = strstr(*temp, str);
+		if (s != NULL)
+			break;
+		temp = temp + 1;
+	}
+	return (&s[5]);
 }

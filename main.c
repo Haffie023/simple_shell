@@ -1,8 +1,4 @@
 #include "simple_shell.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
 
 /**
  * main - entry point
@@ -12,7 +8,7 @@
  * Return: 0 on success
  */
 
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char **env)
+int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	char *buf = NULL;
 	char **segments = NULL;
@@ -29,15 +25,17 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		getline(&buf, &n, stdin);
 		if (strncmp(buf, "\n", 1) == 0)
 		{
-			free(buf);
 			continue;
 		}
 		segments = tokenize(buf);
+		if (builtin(segments) == 0)
+			continue;
 		fullpath = getfullpath(segments);
 		if (fullpath == NULL)
 		{
-			fullpath = segments[0];
-			flag = 0;
+			perror(av[0]);
+			dfree(segments);
+			continue;
 		}
 		runlcmd(fullpath, segments, env);
 		dfree(segments);

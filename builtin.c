@@ -12,6 +12,7 @@ int builtin(char **segments)
 {
 	sf strct[] = {
 		{"exit", exitin},
+		{"env", _printenv},
 		{NULL, NULL}
 	};
 	int i;
@@ -22,8 +23,9 @@ int builtin(char **segments)
 		if (strcmp(segments[0], strct[i].s) == 0)
 		{
 			strct[i].f(segments);
+			return (0);
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }

@@ -5,10 +5,10 @@
  * exitin - calls the exit function
  * @segments: array of pointers
  *
- * Return: Nothing
+ * Return: 0 on success
  */
 
-void exitin(char **segments )
+int  exitin(char **segments)
 {
 	dfree(segments);
 	exit(0);

@@ -1,8 +1,4 @@
 #include "simple_shell.h"
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <string.h>
-#include <stdio.h>
 
 /**
  * getfullpath - is a which linux command implementation
@@ -19,7 +15,10 @@ char *getfullpath(char **segments)
 	int cmd_len;
 	struct stat statbuf;
 
-	builtin(segments);
+	if (stat(segments[0], &statbuf) == 0)
+	{
+		return (strdup(segments[0]));
+	}
 	path = strdup(getenv("PATH"));
 	cmd_len = _strlen(segments[0]);
 	token = strtok(path, ":");

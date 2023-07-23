@@ -1,6 +1,14 @@
 #ifndef SIMPLE_SHELL
 #define SIMPLE_SHELL
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/stat.h>
+
 #define BUFFER 10
+extern char **environ;
 
 /**
  * struct shell_func - Handles the shell functions in our simple shell
@@ -11,7 +19,7 @@
 typedef struct shell_func
 {
 	char *s;
-	void (*f)(char **seg);
+	int (*f)(char **seg);
 } sf;
 int _putchar(char c);
 int main (int ac, char **av __attribute__((unused)), char **env);
@@ -24,5 +32,7 @@ int runlcmd(char *cmd, char **tokens, char **envt);
 char *getfullpath(char **segments);
 int no_delim(char *str);
 int builtin(char **segments);
-void exitin(char **segments);
+int  exitin(char **segments);
+int _printenv(char **segments);
+
 #endif

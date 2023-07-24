@@ -9,9 +9,7 @@
  * Return: 0 on success
  */
 
-
-//why is main having the void apa ivii ? Bacuse this is the engine of the whole code.
-//Heelo uko apo bado
+5fg
 int main(void)
 {
 	char *buf = NULL;

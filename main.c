@@ -23,7 +23,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			imode = 0;
 		prompt();
 		getline(&buf, &n, stdin);
-		if (buf[0] == '\n')
+		if (buf[0] == '\n' || buf[0] == '\t' || buf[0] == ' ')
 		{
 			continue;
 		}

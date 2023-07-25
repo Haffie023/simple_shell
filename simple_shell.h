@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <signal.h>
 
 #define BUFFER 10
 extern char **environ;
@@ -40,5 +41,6 @@ char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 char *_strstr(char *haystack, char *needle);
+void signal_handler(int signal);
 
 #endif

@@ -19,6 +19,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 
 	while (1 && imode)
 	{
+		signal(SIGINT, signal_handler);
 		if (!isatty(STDIN_FILENO))
 			imode = 0;
 		prompt();
@@ -45,3 +46,18 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	free(buf);
 	return (0);
 }
+/**
+ * signal_handler - catching signal
+ * @signal: standard signal
+ *
+ */
+
+void signal_handler(int signal)
+{
+	if (signal == SIGINT)
+	{
+		_putchar('\n');
+		exit(0);
+	}
+}
+

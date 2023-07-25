@@ -42,5 +42,6 @@ int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 char *_strstr(char *haystack, char *needle);
 void signal_handler(int signal);
+int _atoi(char *s);
 
 #endif

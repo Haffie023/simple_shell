@@ -7,10 +7,12 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <errno.h>
+#include <stddef.h>
 #include <signal.h>
 
 
-#define BUFFER 10
+#define BUFFER 1024
 extern char **environ;
 
 /**

@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/stat.h>
 
+
 #define BUFFER 10
 extern char **environ;
 

@@ -9,7 +9,7 @@
 
 int prompt(void)
 {
-	char p[] = "($) ";
+	char p[] = "> ";
 	int i, j;
 
 	i = 0;

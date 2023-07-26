@@ -19,7 +19,7 @@ char *getfullpath(char **segments)
 	{
 		return (_strdup(segments[0]));
 	}
-	path = strdup(_getenv("PATH"));
+	path = _strdup(_getenv("PATH"));
 	cmd_len = _strlen(segments[0]);
 	token = strtok(path, ":");
 	while (token != NULL)

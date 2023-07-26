@@ -20,6 +20,7 @@ char **tokenize(char *buf)
 	segments = malloc(sizeof(char *) * BUFFER);
 	if (segments == NULL)
 	{
+		void free(void *_Memory)
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(b, dl);

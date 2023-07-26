@@ -23,7 +23,7 @@ typedef struct shell_func
 	int (*f)(char **seg);
 } sf;
 int _putchar(char c);
-int main (int ac, char **av __attribute__((unused)), char **env);
+int main(int ac, char **av __attribute__((unused)), char **env);
 int prompt(void);
 int _strlen(char *s);
 char **tokenize(char *buf);

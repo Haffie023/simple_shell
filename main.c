@@ -19,12 +19,11 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 
 	while (1 && imode)
 	{
-		signal(SIGINT, signal_handler);
 		if (!isatty(STDIN_FILENO))
 			imode = 0;
 		prompt();
 		getline(&buf, &n, stdin);
-		if (buf[0] == '\n' || buf[0] == '\t' || buf[0] == ' ')
+		if (buf[0] == '\n')
 		{
 			continue;
 		}
@@ -46,18 +45,40 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	free(buf);
 	return (0);
 }
+#include "simple_shell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
 /**
- * signal_handler - catching signal
- * @signal: standard signal
+ * main - entry point
  *
+ * Return: 0 on success
  */
 
-void signal_handler(int signal)
+int main(void)
 {
-	if (signal == SIGINT)
-	{
-		_putchar('\n');
-		exit(0);
-	}
-}
+	char *buf = NULL;
+	char **segments = NULL;
+	size_t n = 0;
+	ssize_t i;
+	int imode = 1;
 
+	while (1 && imode)
+	{
+		if (isatty(STDIN_FILENO))
+		{
+			prompt();
+		}
+		else
+		{
+			imode = 0;
+		}
+		i = getline(&buf, &n, stdin);
+		segments = tokenize(&buf);
+		runscmd(segments);
+		free(segments);
+		free(buf);
+	}
+	return (0);
+}

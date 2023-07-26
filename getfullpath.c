@@ -60,7 +60,7 @@ char *_getenv(char *str)
 	while (*temp)
 	{
 		s = _strstr(*temp, str);
-		if (s != NULL)
+		if (s != NULL && **temp == str[0])
 			break;
 		temp = temp + 1;
 	}

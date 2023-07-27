@@ -1,6 +1,5 @@
 #include "simple_shell.h"
 #include <unistd.h>
-#include <sys/wait.h>
 
 /**
  * runlcmd - executes full path commands e.g "/bin/ls"

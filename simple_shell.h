@@ -46,8 +46,5 @@ char *_strdup(char *str);
 char *_strstr(char *haystack, char *needle);
 void signal_handler(int signal);
 int _atoi(char *s);
-char *_memset(char *s, char b, unsigned int n);
-void ffree(char **pp);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif

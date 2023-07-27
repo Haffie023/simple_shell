@@ -11,7 +11,7 @@
 #include <signal.h>
 
 
-#define BUFFER 1024
+#define BUFFER 10
 extern char **environ;
 
 /**

@@ -25,9 +25,9 @@ char *getfullpath(char **segments)
 	while (token != NULL)
 	{
 		fullpath = malloc(sizeof(char) * ((_strlen(token)) + cmd_len + 2));
-		if (fullpath == NULL)
+		if (fullpath == 0)
 		{
-			return (NULL);
+			return (0);
 		}
 		_strcpy(fullpath, token);
 		_strcat(fullpath, "/");

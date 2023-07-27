@@ -25,7 +25,7 @@ int runlcmd(char *cmd, char **tokens, char **envt)
 	}
 	else
 	{
-		wait(NULL);
+		wait(0);
 	}
 	return (0);
 }

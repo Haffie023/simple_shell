@@ -21,10 +21,8 @@ int runlcmd(char *cmd, char **tokens, char **envt)
 	if (pid == 0)
 	{
 		execve(cmd, tokens, envt);
+		return (EXIT_SUCCESS);
 	}
 	else
-	{
-		wait(0);
-	}
-	return (0);
+		return (0);
 }

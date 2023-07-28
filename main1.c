@@ -20,11 +20,11 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		{
 			continue;
 		}
-		dfree(segments); // Free previous segments
+		dfree(segments);
 		segments = tokenize(buf);
 		if (builtin(segments) == 0)
 			continue;
-		dfree(fullpath); // Free previous fullpath
+		dfree(fullpath);
 		fullpath = getfullpath(segments);
 		if (fullpath == NULL)
 		{
